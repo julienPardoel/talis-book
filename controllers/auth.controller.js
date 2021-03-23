@@ -30,8 +30,9 @@ module.exports.signIn = async (req, res) => {
     } catch (err) {
         res.status(200).json(err);
     }
-}
+};
 
 module.exports.logOut = (req, res) => {
-
+    res.cookie('jwt', '', {maxAge: 1});
+    res.redirect('/')
 }
