@@ -41,7 +41,7 @@ const Card = ({ post }) => {
                 usersData
                   .map((user) => {
                     if (user._id === post.posterId) return user.picture;
-                    // else return null;
+                    else return null;
                   })
                   .join("")
               }
@@ -76,8 +76,13 @@ const Card = ({ post }) => {
 
             </div>
 
-            {/* {isUpdated === false && <p>{post.message}</p>}
-            {isUpdated && (
+            {/* {isUpdated === false &&  */}
+
+            <p>{post.message}</p>
+
+            {/* } */}
+
+            {/* {isUpdated && (
               <div className="update-post">
                 <textarea
                   defaultValue={post.message}
@@ -89,10 +94,12 @@ const Card = ({ post }) => {
                   </button>
                 </div>
               </div>
-            )}
+            )} */}
+
             {post.picture && (
               <img src={post.picture} alt="card-pic" className="card-pic" />
             )}
+
             {post.video && (
               <iframe
                 width="500"
@@ -104,15 +111,17 @@ const Card = ({ post }) => {
                 title={post._id}
               ></iframe>
             )}
-            {userData._id === post.posterId && (
+
+            {/* {userData._id === post.posterId && (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
                 </div>
                 <DeleteCard id={post._id} />
               </div>
-            )}
-            <div className="card-footer">
+            )} */}
+
+            {/* <div className="card-footer">
               <div className="comment-icon">
                 <img
                   onClick={() => setShowComments(!showComments)}
@@ -123,8 +132,10 @@ const Card = ({ post }) => {
               </div>
               <LikeButton post={post} />
               <img src="./img/icons/share.svg" alt="share" />
-            </div>
-            {showComments && <CardComments post={post} />} */}
+            </div> */}
+
+            {/* {showComments && <CardComments post={post} />} */}
+
           </div>
         </>
       )}
