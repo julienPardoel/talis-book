@@ -10,7 +10,7 @@ import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 
 import rootReducer from "./reducers";
-// import { getUsers } from "./actions/users.actions";
+import { getUsers } from "./actions/users.actions";
 
 // outils de developpement
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -22,7 +22,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-// store.dispatch(getUsers());
+store.dispatch(getUsers());
 // store.dispatch(getPosts());
 
 ReactDOM.render(
