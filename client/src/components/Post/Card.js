@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 import FollowHandler from "../Profil/FollowHandler";
-// import LikeButton from "./LikeButton";
+import LikeButton from "./LikeButton";
 // import { updatePost } from "../../actions/post.actions";
 // import DeleteCard from "./DeleteCard";
 // import CardComments from "./CardComments";
@@ -121,10 +121,10 @@ const Card = ({ post }) => {
               </div>
             )} */}
 
-            {/* <div className="card-footer">
+            <div className="card-footer">
               <div className="comment-icon">
                 <img
-                  onClick={() => setShowComments(!showComments)}
+                  // onClick={() => setShowComments(!showComments)}
                   src="./img/icons/message1.svg"
                   alt="comment"
                 />
@@ -132,7 +132,7 @@ const Card = ({ post }) => {
               </div>
               <LikeButton post={post} />
               <img src="./img/icons/share.svg" alt="share" />
-            </div> */}
+            </div>
 
             {/* {showComments && <CardComments post={post} />} */}
 
