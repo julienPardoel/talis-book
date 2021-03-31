@@ -4,7 +4,7 @@ import { dateParser, isEmpty } from "../Utils";
 import FollowHandler from "../Profil/FollowHandler";
 import LikeButton from "./LikeButton";
 import { updatePost } from "../../actions/post.actions";
-// import DeleteCard from "./DeleteCard";
+import DeleteCard from "./DeleteCard";
 // import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
@@ -115,7 +115,7 @@ const Card = ({ post }) => {
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
                 </div>
-                {/* <DeleteCard id={post._id} /> */}
+                <DeleteCard id={post._id} />
               </div>
             )}
 
