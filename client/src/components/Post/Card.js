@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
 import FollowHandler from "../Profil/FollowHandler";
 import LikeButton from "./LikeButton";
-// import { updatePost } from "../../actions/post.actions";
+import { updatePost } from "../../actions/post.actions";
 // import DeleteCard from "./DeleteCard";
 // import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
-  // const [isUpdated, setIsUpdated] = useState(false);
-  // const [textUpdate, setTextUpdate] = useState(null);
+
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [textUpdate, setTextUpdate] = useState(null);
+
   // const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const updateItem = () => {
-  //   if (textUpdate) {
-  //     dispatch(updatePost(post._id, textUpdate));
-  //   }
-  //   setIsUpdated(false);
-  // };
+  const updateItem = () => {
+    if (textUpdate) {
+      dispatch(updatePost(post._id, textUpdate));
+    }
+    setIsUpdated(false);
+  };
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -76,13 +78,9 @@ const Card = ({ post }) => {
 
             </div>
 
-            {/* {isUpdated === false &&  */}
+            {isUpdated === false && <p>{post.message}</p>}
 
-            <p>{post.message}</p>
-
-            {/* } */}
-
-            {/* {isUpdated && (
+            {isUpdated && (
               <div className="update-post">
                 <textarea
                   defaultValue={post.message}
@@ -94,7 +92,7 @@ const Card = ({ post }) => {
                   </button>
                 </div>
               </div>
-            )} */}
+            )}
 
             {post.picture && (
               <img src={post.picture} alt="card-pic" className="card-pic" />
@@ -112,14 +110,14 @@ const Card = ({ post }) => {
               ></iframe>
             )}
 
-            {/* {userData._id === post.posterId && (
+            {userData._id === post.posterId && (
               <div className="button-container">
                 <div onClick={() => setIsUpdated(!isUpdated)}>
                   <img src="./img/icons/edit.svg" alt="edit" />
                 </div>
-                <DeleteCard id={post._id} />
+                {/* <DeleteCard id={post._id} /> */}
               </div>
-            )} */}
+            )}
 
             <div className="card-footer">
               <div className="comment-icon">
