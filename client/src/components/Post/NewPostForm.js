@@ -11,7 +11,7 @@ const NewPostForm = () => {
   const [video, setVideo] = useState("");
   const [file, setFile] = useState();
   const userData = useSelector((state) => state.userReducer);
-  // const error = useSelector((state) => state.errorReducer.postError);
+  const error = useSelector((state) => state.errorReducer.postError);
   const dispatch = useDispatch();
 
   const handlePost = async () => {
@@ -36,7 +36,7 @@ const NewPostForm = () => {
     setPostPicture(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
     setVideo('');
-  }; 
+  };
 
   const cancelPost = () => {
     setMessage("");
@@ -44,6 +44,8 @@ const NewPostForm = () => {
     setVideo("");
     setFile("");
   };
+
+
 
 
   useEffect(() => {
@@ -72,11 +74,7 @@ const NewPostForm = () => {
     };
     handleVideo();
 
-  }, [
-    userData,
-    message,
-    video
-  ]);
+  }, [userData, message, video]);
 
   return (
     <div className="post-container">
@@ -170,8 +168,9 @@ const NewPostForm = () => {
                 )}
               </div>
 
-              {/* {!isEmpty(error.format) && <p>{error.format}</p>}
-              {!isEmpty(error.maxSize) && <p>{error.maxSize}</p>} */}
+              {/* traitement des erreurs */}
+              {!isEmpty(error.format) && <p>{error.format}</p>}
+              {!isEmpty(error.maxSize) && <p>{error.maxSize}</p>}
 
               <div className="btn-send">
                 {message || postPicture || video.length > 20 ? (
