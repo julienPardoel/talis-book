@@ -22,6 +22,7 @@ const CardComments = ({ post }) => {
   };
 
   return (
+    
     <div className="comments-container">
       {post.comments.map((comment) => {
         return (
